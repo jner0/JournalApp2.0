@@ -21,7 +21,6 @@ export const LoginPage = () => {
 
   // useMemo para memorizar valores booleanos, si el status cambia se obtiene el nuevo valor
   const isAuthenticating = useMemo( () => status === 'checking', [status])
-  console.log('Autenticando?', isAuthenticating);
 
   const onSubmit = ( event ) => {
     event.preventDefault();
