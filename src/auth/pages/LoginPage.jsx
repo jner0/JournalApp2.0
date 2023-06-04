@@ -8,16 +8,19 @@ import { AuthLayout } from '../layout/AuthLayout';
 import { useForm } from '../../hooks';
 import { checkingAuthentication, startGoogleSignIn, startLoginWithEmailPassword } from '../../store/auth/thunks';
 
+
+const formData = {
+    email: '',
+    password: ''
+}
+
 export const LoginPage = () => {
 
   // lo tomamos para validar si esta en checking y poder deshabilitar los botones
   const { status, errorMessage } = useSelector( state => state.auth)
 
   const dispatch = useDispatch();
-  const { email, password, onInputChange} = useForm({
-    email: 'nemecio@hotmail.com',
-    password: '123456'
-  });
+  const { email, password, onInputChange} = useForm(formData);
 
   // useMemo para memorizar valores booleanos, si el status cambia se obtiene el nuevo valor
   const isAuthenticating = useMemo( () => status === 'checking', [status])
